@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Photos App</string>
+    <string name="albums">Albums</string>
+    <string name="create_album">Create Album</string>
+    <string name="delete_album">Delete Album</string>
+    <string name="rename_album">Rename Album</string>
+    <string name="open_album">Open Album</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="remove_photo">Remove Photo</string>
+    <string name="move_photo">Move Photo</string>
+    <string name="add_tag">Add Tag</string>
+    <string name="delete_tag">Delete Tag</string>
+    <string name="search_photos">Search Photos</string>
+    <string name="slideshow">Slideshow</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="album_name">Album Name</string>
+    <string name="enter_album_name">Enter album name</string>
+    <string name="tag_type">Tag Type</string>
+    <string name="tag_value">Tag Value</string>
+    <string name="person">Person</string>
+    <string name="location">Location</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="select_album">Select Album</string>
+    <string name="no_albums">No albums yet. Create one to get started!</string>
+    <string name="no_photos">No photos in this album</string>
+    <string name="no_tags">No tags</string>
+    <string name="search_by_tags">Search by Tags</string>
+    <string name="and">AND</string>
+    <string name="or">OR</string>
+    <string name="add_search_criteria">Add Search Criteria</string>
+    <string name="search">Search</string>
+    <string name="no_results">No matching photos found</string>
+</resources>
+
