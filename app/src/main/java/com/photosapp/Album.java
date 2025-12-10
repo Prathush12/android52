@@ -27,12 +27,15 @@ public class Album implements Serializable {
         return new ArrayList<>(photos);
     }
     
-    public void addPhoto(Photo photo) {
-        photos.add(photo);
+    public boolean addPhoto(Photo photo) {
+        if (photos.contains(photo)) {
+            return false;
+        }
+        return photos.add(photo);
     }
     
-    public void removePhoto(Photo photo) {
-        photos.remove(photo);
+    public boolean removePhoto(Photo photo) {
+        return photos.remove(photo);
     }
     
     public int getPhotoCount() {
