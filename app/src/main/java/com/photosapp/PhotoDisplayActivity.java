@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.photosapp.R;
 
 import java.io.InputStream;
 import java.util.List;
@@ -136,7 +137,7 @@ public class PhotoDisplayActivity extends AppCompatActivity {
         TextInputEditText valueInput = dialogView.findViewById(R.id.tagValueInput);
         
         new AlertDialog.Builder(this)
-            .setTitle(R.string/add_tag)
+            .setTitle(R.string.add_tag)
             .setView(dialogView)
             .setPositiveButton(R.string.ok, (dialog, which) -> {
                 String type = typeInput.getText() != null ? typeInput.getText().toString().trim() : "";
