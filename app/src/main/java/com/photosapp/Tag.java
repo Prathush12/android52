@@ -47,4 +47,3 @@ public class Tag implements Serializable {
         return type + ": " + value;
     }
 }
-

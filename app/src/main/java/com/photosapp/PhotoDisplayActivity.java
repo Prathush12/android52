@@ -189,4 +189,3 @@ public class PhotoDisplayActivity extends AppCompatActivity {
             .show();
     }
 }
-

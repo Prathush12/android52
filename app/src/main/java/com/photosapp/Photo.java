@@ -47,18 +47,4 @@ public class Photo implements Serializable {
         }
         return false;
     }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Photo photo = (Photo) obj;
-        return filePath.equals(photo.filePath);
-    }
-    
-    @Override
-    public int hashCode() {
-        return filePath.hashCode();
-    }
 }
-

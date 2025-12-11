@@ -80,4 +80,3 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
         }
     }
 }
-

@@ -84,19 +84,17 @@ public class PhotoManager {
                 boolean matches;
                 
                 if (isConjunction) {
-                    // AND: all tags must match
                     matches = true;
                     for (Tag searchTag : searchTags) {
-                        if (!photo.hasTag(searchTag.getType(), searchTag.getValue())) {
+                        if (!photoHasMatchingTag(photo, searchTag)) {
                             matches = false;
                             break;
                         }
                     }
                 } else {
-                    // OR: at least one tag must match
                     matches = false;
                     for (Tag searchTag : searchTags) {
-                        if (photo.hasTag(searchTag.getType(), searchTag.getValue())) {
+                         if (photoHasMatchingTag(photo, searchTag)) {
                             matches = true;
                             break;
                         }
@@ -111,6 +109,16 @@ public class PhotoManager {
         
         return results;
     }
+
+    private boolean photoHasMatchingTag(Photo photo, Tag searchTag) {
+        for (Tag photoTag : photo.getTags()) {
+            if (photoTag.getType().equalsIgnoreCase(searchTag.getType()) &&
+                photoTag.getValue().equalsIgnoreCase(searchTag.getValue())) {
+                return true;
+            }
+        }
+        return false;
+    }
     
     public List<String> getAutocompleteSuggestions(String type, String prefix) {
         List<String> suggestions = new ArrayList<>();
@@ -122,7 +130,14 @@ public class PhotoManager {
                     if (tag.getType().equalsIgnoreCase(type)) {
                         String value = tag.getValue();
                         if (value.toLowerCase().startsWith(prefix)) {
-                            if (!suggestions.contains(value)) {
+                             boolean exists = false;
+                             for (String s : suggestions) {
+                                 if (s.equalsIgnoreCase(value)) {
+                                     exists = true;
+                                     break;
+                                 }
+                             }
+                            if (!exists) {
                                 suggestions.add(value);
                             }
                         }
@@ -160,4 +175,3 @@ public class PhotoManager {
         }
     }
 }
-

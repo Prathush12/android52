@@ -64,12 +64,21 @@ public class AlbumActivity extends AppCompatActivity {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                     Uri imageUri = result.getData().getData();
                     if (imageUri != null) {
+                        try {
+                            getContentResolver().takePersistableUriPermission(imageUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        
                         String filePath = imageUri.toString();
                         String fileName = getFileName(imageUri);
                         Photo photo = new Photo(filePath, fileName);
-                        currentAlbum.addPhoto(photo);
-                        photoManager.saveData();
-                        updatePhotoList();
+                        if(currentAlbum.addPhoto(photo)){
+                           photoManager.saveData();
+                           updatePhotoList();
+                        } else {
+                           Toast.makeText(this, "Photo already exists in this album", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             }
@@ -89,7 +98,9 @@ public class AlbumActivity extends AppCompatActivity {
     }
     
     private void pickImage() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("image/*");
         pickImageLauncher.launch(intent);
     }
     
@@ -104,6 +115,8 @@ public class AlbumActivity extends AppCompatActivity {
                         result = cursor.getString(nameIndex);
                     }
                 }
+            } catch (Exception e) {
+                // Ignore
             } finally {
                 if (cursor != null) {
                     cursor.close();
@@ -211,4 +224,3 @@ public class AlbumActivity extends AppCompatActivity {
             .show();
     }
 }
-

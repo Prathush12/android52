@@ -28,8 +28,12 @@ public class Album implements Serializable {
     }
     
     public boolean addPhoto(Photo photo) {
-        if (photos.contains(photo)) {
-            return false;
+        // We only check if the photo is already in THIS album.
+        // The spec allows the same photo in multiple albums.
+        for(Photo p : photos) {
+            if(p.getFilePath().equals(photo.getFilePath())) {
+                return false;
+            }
         }
         return photos.add(photo);
     }
@@ -55,4 +59,3 @@ public class Album implements Serializable {
         return name.hashCode();
     }
 }
-
